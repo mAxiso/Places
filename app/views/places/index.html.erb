@@ -1,0 +1,14 @@
+<h1>Select a place!</h1>
+
+<ol>
+  <% @places.each do |place|%>
+    
+   <li>
+      <h3><%= link_to place.name, place %></h3> 
+    
+      <p>-<%= place.description %><p> 
+   </li>
+  <% end %>
+</ol>
+
+<%= link_to "Add a Place", new_place_path %>

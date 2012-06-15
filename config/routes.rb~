@@ -1,7 +1,19 @@
 Places::Application.routes.draw do
 
 
- 
+  get "places/index"
+
+  get "places/show"
+
+  get "places/new"
+
+  get "places/create"
+
+  get "places/edit"
+
+  get "places/update"
+
+  get "places/destroy"
 
    resources :places
   # The priority is based upon order of creation:

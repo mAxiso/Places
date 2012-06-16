@@ -1,5 +1,7 @@
 class Place < ActiveRecord::Base
+  has_many :events
   attr_accessible :adress, :description, :name, :phone
+  
 
   validates_presence_of :name, :adress
   validates_uniqueness_of :name, :adress, :description
@@ -14,6 +16,7 @@ class Place < ActiveRecord::Base
     self.adress = self.adress.strip.capitalize
   end
 
+  
   
 end
 

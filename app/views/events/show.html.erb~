@@ -4,12 +4,13 @@
   <p>
   -Date: <%= @event.date %>
   </p>
+  -Place: <%= @event.place_id %>
   <p>
   
   -Your rating: <% if @event.rating %>
 			<%= @event.rating %> 
 		<% else %>
-			<%= link_to "*", event_path(@event, {:rating => 1}), :method => :put %>
+			<%= link_to "*", event_path(@event, :rating => 1), :method => :put %>
 			<%= link_to "*", event_path(@event, :rating => 2), :method => :put %>
 			<%= link_to "*", event_path(@event, :rating => 3), :method => :put %>
 			<%= link_to "*", event_path(@event, :rating => 4), :method => :put %>
@@ -20,5 +21,5 @@
   <%= link_to "Delete", @event, :method => :delete, :confirm => "Are you sure?" %>
   <%= link_to "Update", edit_event_path(@event) %>
 </ol>
-<%= link_to "Events", events_path %>
+<%= link_to "go to place", place_path(Place.find_by_id(@event.place_id)) %>
 

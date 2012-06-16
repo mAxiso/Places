@@ -9,10 +9,13 @@ class EventsController < ApplicationController
 
   def new
 	@event = Event.new
+	
+	
   end
 
   def create
 	@event = Event.new(params[:event])
+	
     	if @event.save
           redirect_to @event
     	else
@@ -38,11 +41,15 @@ class EventsController < ApplicationController
 
   def destroy
 	Event.find_by_id(params[:id]).try(:delete)
-   	redirect_to events_path
+   	redirect_to places_path
   end
 
   def rate
 	@event = Event.find(params[:id])
 	
   end
+
+  
+
+
 end

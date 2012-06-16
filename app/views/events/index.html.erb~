@@ -11,4 +11,4 @@
   <% end %>
 </ol>
 
-<%= link_to "Add an event", new_place_path %>
+<%= link_to "Add an event", new_event_path %>

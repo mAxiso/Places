@@ -10,6 +10,25 @@
 
   <%= link_to "Delete", @place, :method => :delete, :confirm => "Are you sure?" %>
 </ol>
+
+
+<% if @place.events.present? %>
+  
+  <ol>
+  <h2> Events! </h2>
+  <% @place.events.each do |event|%>
+    
+   <li>
+      <h3><%= link_to event.name,  event %></h3> 
+    
+      <p>-<%= event.description %><p> 
+   </li>
+  <% end %>
+</ol>
+<% end %>
+
+<%= link_to "Add an event", new_event_path(:place_id => @place.id)  %>
 <%= link_to "Places", places_path %>
 <%= link_to "Update", edit_place_path(@place) %>
+
 

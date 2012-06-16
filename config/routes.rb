@@ -7,10 +7,15 @@ Places::Application.routes.draw do
 
   root to: "home#index"
   resources :events 
+ 
 	
   
 
-   resources :places
+   resources :places do
+    	get :events, on: :member
+	
+   end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -43,4 +43,8 @@ class PlacesController < ApplicationController
 	Place.find_by_id(params[:id]).try(:delete)
    	redirect_to places_path
   end
+  def events
+    @events = Place.find_by_id(params[:id]).events
+    render 'events/index'
+  end
 end

@@ -15,6 +15,7 @@ class PlacesController < ApplicationController
 
   def create
 	@place = Place.new(params[:place])
+	
     	if @place.save
           redirect_to @place
     	else
@@ -42,5 +43,9 @@ class PlacesController < ApplicationController
   def destroy
 	Place.find_by_id(params[:id]).try(:delete)
    	redirect_to places_path
+  end
+  def events
+    @events = Place.find_by_id(params[:id]).events
+    render 'events/index'
   end
 end

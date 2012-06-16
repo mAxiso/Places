@@ -1,0 +1,25 @@
+<%= link_to "back", root_path %>
+<%= form_for @user do |f| %>
+  
+  <% if @user.errors.any? %>
+      <h3>Something went wrong!</h3>
+      <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+      </ul>
+  <% end %>
+
+
+  <p>
+    <%= f.label :username %>
+    <%= f.text_area :username %>
+    
+    <%= f.label :email %>
+    <%= f.text_area :email %>    
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+

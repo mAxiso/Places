@@ -19,8 +19,16 @@
     <%= f.label :adress %>
     <%= f.text_area :adress %>
     <%= f.label :phone %>
-    <%= f.text_area :phone %>    
+    <%= f.text_area :phone %>   
+    <%= f.hidden_field :user_id, :value => params[:user_id] %> 
   </p>
+  <p>
+    -User: 
+    <select name="user_id">
+      <option value= <%= params[:user_id] %> > <%=User.find_by_id(params[:user_id]).username %>  </option>
+    </select>
+  </p>
+
   <p>
     <%= f.submit %>
   </p>

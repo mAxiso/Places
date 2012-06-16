@@ -7,6 +7,9 @@
   <p>
   -Phone: <%= @place.phone %>
   </p>
+  <p>
+  -User who added this place: <%= link_to User.find_by_id(@place.user_id).username, User.find_by_id(@place.user_id) %>
+  </p>
 
   <%= link_to "Delete", @place, :method => :delete, :confirm => "Are you sure?" %>
 </ol>

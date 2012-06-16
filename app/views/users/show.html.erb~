@@ -1,0 +1,30 @@
+<h1><%= @user.username %> <h1>
+
+<ol>
+  <p>
+  -Email: <%= @user.email %>
+  </p>
+  
+
+  <%= link_to "Delete Account", @user, :method => :delete, :confirm => "Are you sure?" %>
+</ol>
+
+
+<% if @user.places.present? %>
+  
+  <ol>
+  <h2> Places <%= @user.username %> has added! </h2>
+  <% @user.places.each do |place|%>
+    
+   <li>
+      <h3><%= link_to place.name,  place %></h3> 
+    
+      <p>-<%= place.description %><p> 
+   </li>
+  <% end %>
+</ol>
+<% end %>
+
+<%= link_to "Add a place", new_place_path(:user_id => @user.id)  %>
+<%= link_to "Places", places_path %>
+<%= link_to "Update", edit_user_path(@user) %>

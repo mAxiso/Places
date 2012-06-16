@@ -1,0 +1,27 @@
+<%= link_to "back", events_path %>
+<%= form_for @event do |f| %>
+  
+  <% if @event.errors.any? %>
+      <h3>Something went wrong!</h3>
+      <ul>
+          <% @event.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+      </ul>
+  <% end %>
+
+
+  <p>
+    <%= f.label :name %>
+    <%= f.text_area :name %>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+    <%= f.label :date %>
+    <%= f.text_area :date %>
+      
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+

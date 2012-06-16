@@ -29,12 +29,15 @@ class PlacesController < ApplicationController
 
   def update
 	@place = Place.find(params[:id])
+	
     	if @place.update_attributes(params[:place])
           redirect_to @place
     	else
           render :edit
     	end
   end
+
+  
 
   def destroy
 	Place.find_by_id(params[:id]).try(:delete)

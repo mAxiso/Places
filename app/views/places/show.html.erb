@@ -1,5 +1,6 @@
 <h1><%= @place.name %> <h1>
 <h3><%= @place.description %></h3>
+<h3> current user <%= current_user.username %> </h3>
 <ol>
   <p>
   -Adress: <%= @place.adress %>
@@ -10,8 +11,9 @@
   <p>
   -User who added this place: <%= link_to User.find_by_id(@place.user_id).username, User.find_by_id(@place.user_id) %>
   </p>
-
-  <%= link_to "Delete", @place, :method => :delete, :confirm => "Are you sure?" %>
+  <% if current_user.id == @place.user_id %>
+	<%= link_to "Delete", @place, :method => :delete, :confirm => "Are you sure?" %>
+  <% end %>
 </ol>
 
 
@@ -29,9 +31,11 @@
   <% end %>
 </ol>
 <% end %>
-
+<% if current_user.id == @place.user_id %>
 <%= link_to "Add an event", new_user_place_event_path(:place_id => @place.id)  %>
-<%= link_to "Places", places_path %>
+
 <%= link_to "Update", edit_user_place_path(@place, :user_id => @place.user_id) %>
+<% end %>
+<%= link_to "Places", places_path %>
 
 

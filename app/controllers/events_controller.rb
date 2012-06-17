@@ -40,7 +40,7 @@ class EventsController < ApplicationController
 
 
   def destroy
-	Event.find_by_id(params[:id]).try(:delete)
+	Event.find_by_id(params[:id]).try(:destroy)
    	redirect_to places_path
   end
 

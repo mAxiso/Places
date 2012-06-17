@@ -6,9 +6,11 @@
   -Email: <%= @user.email %>
   </p>
   
-
+  <% if current_user.id == @user.id %>
   <%= link_to "Delete Account", @user, :method => :delete, :confirm => "Are you sure?" %>
+  
   <%= link_to "Sign Out", log_out_path(@user) %>
+  <% end %>
   
  
 </ol>
@@ -28,7 +30,10 @@
   <% end %>
 </ol>
 <% end %>
-
+<% if current_user.id == @user.id %>
 <%= link_to "Add a place", new_user_place_path(:user_id => @user.id)  %>
-<%= link_to "Places", places_path %>
+
 <%= link_to "Update", edit_user_path(@user) %>
+<% end %>
+
+<%= link_to "Places", places_path %>

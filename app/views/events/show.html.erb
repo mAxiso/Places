@@ -18,8 +18,10 @@
 	 	<% end %>
    
   </p>
+  <% if current_user.id == Place.find_by_id(@event.place_id).user_id %>
   <%= link_to "Delete", @event, :method => :delete, :confirm => "Are you sure?" %>
   <%= link_to "Update", edit_user_place_event_path(@event, :place_id => @event.place_id, :user_id => Place.find_by_id(@event.place_id).user_id ) %>
+  <% end %>
 </ol>
 <%= link_to "go to place", user_place_path(Place.find_by_id(@event.place_id), :user_id => Place.find_by_id(@event.place_id).user_id) %>
 

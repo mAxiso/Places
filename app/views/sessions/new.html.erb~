@@ -1,6 +1,12 @@
 <h1>Places!</h1>
 <h2>A place to find all your awesome places </h2>
+<p> <%= flash[:warning] || flash[:notice] %> </p>
+
+
+<% if current_user == nil%>
 <h3>Log in to proceed</h3>
+
+
 
 
 
@@ -20,3 +26,7 @@
 <% end %>
 
 <%= link_to "Sign Up", new_user_path %>
+<% else %>
+<%= link_to "Go To User", current_user_path %>
+<% end %>
+

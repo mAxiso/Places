@@ -1,33 +1,50 @@
 class UsersController < ApplicationController
   def index
-	@users=User.all
-  end
+	
+		@users=User.all
+	end
+  
 
   def show
+	
+	
 	@user = User.find(params[:id])
+	
   end
 
   def new
+	if current_user 
+		redirect_to root_path
+	else
 	@user = User.new
+	end
   end
 
   def create
+	
+		
 	@user = User.new(params[:user])
 	
     	if @user.save
-          redirect_to @user
+          redirect_to root_path
     	else
           render :new
     	end
+	
   end
 
   def edit
+	if current_user 
+		redirect_to root_path
+	else	
 	@user = User.find(params[:id])
+	end
   end
 
   def update
 	@User = User.find(params[:id])
 	
+     
     	if @user.update_attributes(params[:user])
           redirect_to @user
     	else
@@ -36,8 +53,19 @@ class UsersController < ApplicationController
   end
 
   def destroy
-	User.find_by_id(params[:id]).try(:delete)
-   	redirect_to users_path
+	@user = User.find_by_id(params[:id])
+	if current_user == @user 
+		
+		if @user.try(:destroy)
+   			redirect_to root_path, notice: "Your account has been deleted"
+		else
+			redirect_to @user, notice: "Something Went Wrong!"
+		end
+	else
+		redirect_to current_user, notice: "You are not this user!"
+	end
+		
+		
   end
 
   def places

@@ -1,6 +1,7 @@
 class Place < ActiveRecord::Base
   belongs_to :user
-  has_many :events
+  has_many :events, :dependent => :destroy
+  
   attr_accessible :adress, :description, :name, :phone, :user_id
   
 

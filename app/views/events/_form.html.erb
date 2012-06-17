@@ -1,5 +1,18 @@
 
-<%= form_for @event do |f| %>
+
+<html>
+<head>
+    <%= stylesheet_link_tag "mystyle.css" %>
+  <title>Places</title>
+</head>
+<body>
+   <div id='mycontainer' >  
+
+    <div id='mycenter2' , class='createformcenter'>
+
+      <div id='createform', class='mycontainer2'>
+
+        <%= form_for @event do |f| %>
   
   <% if @event.errors.any? %>
       <h3>Something went wrong!</h3>
@@ -12,13 +25,13 @@
 
 
   <p>
-    <%= f.label :name %>
-    <%= f.text_area :name %>
     
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-    <%= f.label :date %>
-    <%= f.text_area :date %>
+    <%= f.text_field :name, :placeholder=>'Name' %>
+    <br>
+    
+    <%= f.text_area :description , :placeholder=>'Description', :id=>'eventdescription'%>
+    <br>
+    <%= f.text_field :date, :placeholder=>'Date'%>
     <%= f.hidden_field :place_id, :value => params[:place_id] %>
 
     
@@ -27,16 +40,24 @@
    
   <p>
 
-    -Place: 
-    <select name="place_id">
+    <span id='place_selection_text'>Place: </span>
+    <select name="place_id"  >
       <option value= <%= params[:place_id].to_i %> > <%=Place.find_by_id(params[:place_id]).name %>  </option>
     </select>
     
-	
+  
     
   </p>
   <p>
-    <%= f.submit%>
+    <%= f.submit :class=>'btn'%>
   </p>
 <% end %>
+
+      </div>
+    </div>
+    </div>
+</body>
+</html>
+
+
 

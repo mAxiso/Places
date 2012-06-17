@@ -1,4 +1,17 @@
-<%= link_to "back", root_path %>
+
+<html>
+<head>
+  <%= stylesheet_link_tag "mystyle.css" %>
+  <title>Places</title>
+</head>
+<body>
+    <div id='mycontainer3' >  
+
+    <div id='mycenter' , class='createformcenter'>
+
+      <div id='createform', class='mycontainer2'>
+
+        <%= link_to "back", root_path %>
 <%= form_for @user do |f| %>
   
   <% if @user.errors.any? %>
@@ -12,23 +25,32 @@
 
 
   <p>
-    <%= f.label :username %>
-    <%= f.text_area :username %>
+   
+    <%= f.text_field :username, :placeholder=>'Username' %>
+    <br>
     
-    <%= f.label :email %>
-    <%= f.text_area :email %>   
+    <%= f.text_field :email, :placeholder=>'Email' %>   
     <div class="field">
-    	<%= f.label :password %><br />
-    	<%= f.password_field :password %>
+     
+      <%= f.password_field :password, :placeholder=>'password' ,:id=>'userpass' %>
     </div>
     <div class="field">
-     <%= f.label :password_confirmation %><br />
-     <%= f.password_field :password_confirmation %>
+     
+     <%= f.password_field :password_confirmation, :placeholder=>'password confirmation',:id=>'userpass' %>
     </div>
  
   </p>
   <p>
-    <%= f.submit %>
+    <%= f.submit :class=>'btn' %>
   </p>
 <% end %>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
+
+
 

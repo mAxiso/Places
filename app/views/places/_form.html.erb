@@ -1,4 +1,16 @@
-<p>
+
+
+
+<html>
+<head>
+  <%= stylesheet_link_tag "mystyle.css" %>
+  <title>Places</title>
+</head>
+<body>
+  <div id='mycontainer' >
+    <div id='mycenter' , class='createformcenter'>
+      <div id='createform', class='mycontainer2'>
+          <p>
     -User: <%=User.find_by_id(params[:user_id]).username %>
 </p>
 
@@ -15,20 +27,30 @@
 
 
   <p>
-    <%= f.label :name %>
-    <%= f.text_area :name %>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-    <%= f.label :adress %>
-    <%= f.text_area :adress %>
-    <%= f.label :phone %>
-    <%= f.text_area :phone %>   
-    <%= f.hidden_field :user_id, :value => params[:user_id] %> 
+    <%= f.text_field :name, :placeholder=>'Name' %>
+   <br>
+    
+    <%= f.text_area :description, :placeholder=>'Description', :id=>'eventdescription'%>
+    <br>
+    <%= f.text_field :adress, :placeholder=>'Address' %>
+   <br>
+    <%= f.text_field :phone, :placeholder=>'Phone'%>   
+    <%= f.hidden_field :user_id, :value => params[:user_id] , :placeholder=>'Description'%> 
   </p>
   
 
   <p>
-    <%= f.submit %>
+    <%= f.submit  :class=>'btn'%>
   </p>
 <% end %>
+      </div>
+        
+    </div>
+  </div>
+
+</body>
+</html>
+
+
+
 

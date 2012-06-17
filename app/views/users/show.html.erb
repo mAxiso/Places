@@ -1,9 +1,20 @@
-<h1><%= @user.username %> </h1>
+<html>
+<head>
+  <%= stylesheet_link_tag "mystyle.css" %>
+  <title>Places</title>
+</head>
+<body>
 <%= flash[:warning] || flash[:notice] %>
+    <div id='containerheight'>
+       <h1><%= @user.username %> </h1>
+        <div id='mycenter2' class='shadow1'>
+           
+
+<div class='mycontainer2'  id='showplace'>
 
 <ol>
   <p>
-  -Email: <%= @user.email %>
+  Email: <%= @user.email %>
   </p>
   
   <% if current_user.id == @user.id %>
@@ -37,3 +48,15 @@
 <% end %>
 
 <%= link_to "Places", places_path %>
+
+
+</div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
+
+

@@ -1,27 +1,60 @@
-<h1><%= @event.name %> <h1>
-<h3><%= @event.description %></h3>
-<ol>
-  <p>
-  -Date: <%= @event.date %>
-  </p>
-  -Place: <%= (Place.find_by_id(@event.place_id)).name %>
-  <p>
+<html>
+<head>
+  <%= stylesheet_link_tag "mystyle.css" %>
+  <title>Places</title>
+</head>
+<body>
+  <div id='containerheight'>
+    <h1><%= @event.name %> <h1>
+    <div id='mycenter2' class='shadow1'>
+      <div class='mycontainer2'  id='showplace'>
+          <h3><%= @event.description %></h3>
+
+  <div id='eventlist'>
+    <ul>
+      <div id='listitem'>
+        <li> <p>
+         Date: <%= @event.date %>
+         </p></li>
+      </div>
+ 
+
+    <li><p> Place: <%= (Place.find_by_id(@event.place_id)).name %></p></li>
+ <li>
+<p>
   
-  -Your rating: <% if @event.rating %>
-			<%= @event.rating %> 
-		<% else %>
-			<%= link_to "*", user_place_event_path(@event, :rating => 1), :method => :put %>
-			<%= link_to "*", user_place_event_path(@event, :rating => 2), :method => :put %>
-			<%= link_to "*", user_place_event_path(@event, :rating => 3), :method => :put %>
-			<%= link_to "*", user_place_event_path(@event, :rating => 4), :method => :put %>
-			<%= link_to "*", user_place_event_path(@event, :rating => 5), :method => :put %>
-	 	<% end %>
-   
+  Your rating: <% if @event.rating %>
+      <%= @event.rating %> 
+    <% else %>
+    <br>
+    <br>
+      <%= link_to "*", user_place_event_path(@event, :rating => 1), :method => :put , :id=>'eventlink'%>
+      <%= link_to "*", user_place_event_path(@event, :rating => 2), :method => :put , :id=>'eventlink'%>
+      <%= link_to "*", user_place_event_path(@event, :rating => 3), :method => :put , :id=>'eventlink'%>
+      <%= link_to "*", user_place_event_path(@event, :rating => 4), :method => :put , :id=>'eventlink'%>
+      <%= link_to "*", user_place_event_path(@event, :rating => 5), :method => :put , :id=>'eventlink'%>
+    <% end %>
+  
   </p>
+ </li>
+  
+   </ul>
+  </div>
+  <div>
   <% if current_user.id == Place.find_by_id(@event.place_id).user_id %>
-  <%= link_to "Delete", @event, :method => :delete, :confirm => "Are you sure?" %>
-  <%= link_to "Update", edit_user_place_event_path(@event, :place_id => @event.place_id, :user_id => Place.find_by_id(@event.place_id).user_id ) %>
+  <%= link_to "Delete", @event, :method => :delete, :confirm => "Are you sure?" , :id=>'eventlink'%>
+  <%= link_to "Update", edit_user_place_event_path(@event, :place_id => @event.place_id, :user_id => Place.find_by_id(@event.place_id).user_id ), :id=>'eventlink' %>
   <% end %>
-</ol>
-<%= link_to "go to place", user_place_path(Place.find_by_id(@event.place_id), :user_id => Place.find_by_id(@event.place_id).user_id) %>
+
+<%= link_to "go to place", user_place_path(Place.find_by_id(@event.place_id), :user_id => Place.find_by_id(@event.place_id).user_id), :id=>'eventlink' %>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>
+
+
+
 

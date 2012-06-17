@@ -1,16 +1,38 @@
-
-
-<h1>Select a place!</h1>
-
-<ol>
-  <% @places.each do |place|%>
+<html>
+<head>
+	<%= stylesheet_link_tag "mystyle.css" %>
+	<title>Places</title>
+</head>
+<body>
+<div id='containerheight'>
+	<h1>Select a place!</h1>
+	<div id='mycenter2' class='shadow1'>
+		<div id='mybox'  >
+			<ul>
+  		<% @places.each do |place|%>
     
-   <li>
-      <h3><%= link_to place.name, user_place_path(place, :user_id => place.user_id)   %></h3> 
+   		<li>
+   		<div id='aplace' class='shadow2'>
+   			<h3><%= link_to place.name, user_place_path(place, :user_id => place.user_id) %>
+      	</h3> 
     
-      <p>-<%= place.description %><p> 
-   </li>
-  <% end %>
-</ol>
+     	 <p>-<%= place.description %><p> 
+   		</div>
+      	
+  		 </li>
+
+  		<% end %>
+		</ul>
+
+		</div>
+		
+	</div>
+
+</div>
+	
+
+</body>
+</html>
+
 
 

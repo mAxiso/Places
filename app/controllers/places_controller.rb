@@ -17,9 +17,9 @@ class PlacesController < ApplicationController
 	@place = Place.new(params[:place])
 	
     	if @place.save
-          redirect_to @place
+          redirect_to user_place_path(@place, :user_id => @place.user_id)
     	else
-          render :new
+          redirect_to new_user_place_path(@place, :user_id => @place.user_id)
     	end
   end
 
@@ -32,9 +32,9 @@ class PlacesController < ApplicationController
 	@place = Place.find(params[:id])
 	
     	if @place.update_attributes(params[:place])
-          redirect_to @place
+          redirect_to user_place_path(@place, :user_id => @place.user_id)
     	else
-          render :edit
+          redirect_to edit_user_place_path(@place, :user_id => @place.user_id)
     	end
   end
 

@@ -5,17 +5,42 @@ Places::Application.routes.draw do
 
   
 
-  root to: "home#index"
-  resources :events 
-  resources :users
- 
-	
   
 
-   resources :places do
-    	get :events, on: :member
+  root to: "sessions#new"
+  
+  
+   
+   resources :users do
+    	
+	
+	resources :places do
+    		resources :events, on: :member
+		
+   	end
+        
 	
    end
+ 
+   resources :places do
+    		get :events, on: :member
+		
+   end
+
+  resources :events
+
+  resources :sessions
+
+    
+  
+   
+   
+   
+   
+   
+   
+
+   
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

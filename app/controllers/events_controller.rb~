@@ -15,9 +15,9 @@ class EventsController < ApplicationController
 
   def create
 	@event = Event.new(params[:event])
-	@event.place_id = params[:place_id].to_i
+	
     	if @event.save
-          redirect_to @event
+          redirect_to user_place_event_path(@event, :place_id => @event.place_id, :user_id => Place.find_by_id(@event.place_id).user_id)
     	else
           render :new
     	end
@@ -30,11 +30,11 @@ class EventsController < ApplicationController
   def update
 	
 	@event = Event.find(params[:id])
-	
+	@event.rating = params[:rating].to_i
     	if @event.update_attributes(params[:event])
-          redirect_to @event
+          redirect_to user_place_event_path(@event, :place_id => @event.place_id, :user_id => Place.find_by_id(@event.place_id).user_id)
     	else
-          render :edit
+          redirect_to edit_user_place_event_path(@event, :place_id => @event.place_id, :user_id => Place.find_by_id(@event.place_id).user_id)
     	end
   end
 

@@ -16,7 +16,16 @@
     <%= f.text_area :username %>
     
     <%= f.label :email %>
-    <%= f.text_area :email %>    
+    <%= f.text_area :email %>   
+    <div class="field">
+    	<%= f.label :password %><br />
+    	<%= f.password_field :password %>
+    </div>
+    <div class="field">
+     <%= f.label :password_confirmation %><br />
+     <%= f.password_field :password_confirmation %>
+    </div>
+ 
   </p>
   <p>
     <%= f.submit %>

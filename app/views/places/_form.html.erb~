@@ -1,4 +1,7 @@
-<%= link_to "back", places_path %>
+<p>
+    -User: <%=User.find_by_id(params[:user_id]).username %>
+</p>
+
 <%= form_for @place do |f| %>
   
   <% if @place.errors.any? %>
@@ -22,12 +25,7 @@
     <%= f.text_area :phone %>   
     <%= f.hidden_field :user_id, :value => params[:user_id] %> 
   </p>
-  <p>
-    -User: 
-    <select name="user_id">
-      <option value= <%= params[:user_id] %> > <%=User.find_by_id(params[:user_id]).username %>  </option>
-    </select>
-  </p>
+  
 
   <p>
     <%= f.submit %>

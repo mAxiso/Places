@@ -10,16 +10,16 @@
   -Your rating: <% if @event.rating %>
 			<%= @event.rating %> 
 		<% else %>
-			<%= link_to "*", event_path(@event, :rating => 1), :method => :put %>
-			<%= link_to "*", event_path(@event, :rating => 2), :method => :put %>
-			<%= link_to "*", event_path(@event, :rating => 3), :method => :put %>
-			<%= link_to "*", event_path(@event, :rating => 4), :method => :put %>
-			<%= link_to "*", event_path(@event, :rating => 5), :method => :put %>
+			<%= link_to "*", user_place_event_path(@event, :rating => 1), :method => :put %>
+			<%= link_to "*", user_place_event_path(@event, :rating => 2), :method => :put %>
+			<%= link_to "*", user_place_event_path(@event, :rating => 3), :method => :put %>
+			<%= link_to "*", user_place_event_path(@event, :rating => 4), :method => :put %>
+			<%= link_to "*", user_place_event_path(@event, :rating => 5), :method => :put %>
 	 	<% end %>
    
   </p>
   <%= link_to "Delete", @event, :method => :delete, :confirm => "Are you sure?" %>
-  <%= link_to "Update", edit_event_path(@event) %>
+  <%= link_to "Update", edit_user_place_event_path(@event, :place_id => @event.place_id, :user_id => Place.find_by_id(@event.place_id).user_id ) %>
 </ol>
-<%= link_to "go to place", place_path(Place.find_by_id(@event.place_id)) %>
+<%= link_to "go to place", user_place_path(Place.find_by_id(@event.place_id), :user_id => Place.find_by_id(@event.place_id).user_id) %>
 

@@ -7,6 +7,7 @@
   
 
   <%= link_to "Delete Account", @user, :method => :delete, :confirm => "Are you sure?" %>
+ 
 </ol>
 
 
@@ -17,7 +18,7 @@
   <% @user.places.each do |place|%>
     
    <li>
-      <h3><%= link_to place.name,  place %></h3> 
+      <h3><%= link_to place.name, user_place_path(place, :user_id => place.user_id) %></h3> 
     
       <p>-<%= place.description %><p> 
    </li>
@@ -25,6 +26,6 @@
 </ol>
 <% end %>
 
-<%= link_to "Add a place", new_place_path(:user_id => @user.id)  %>
+<%= link_to "Add a place", new_user_place_path(:user_id => @user.id)  %>
 <%= link_to "Places", places_path %>
 <%= link_to "Update", edit_user_path(@user) %>

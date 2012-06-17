@@ -7,6 +7,7 @@ gem 'rails', '3.2.3'
 
 gem 'sqlite3', :group => :development
 gem 'pg', :group => :production 
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 
 

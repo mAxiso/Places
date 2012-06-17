@@ -17,9 +17,9 @@ class EventsController < ApplicationController
 	@event = Event.new(params[:event])
 	
     	if @event.save
-          redirect_to @event
+          redirect_to user_place_event_path(@event, :place_id => @event.place_id, :user_id => Place.find_by_id(@event.place_id).user_id)
     	else
-          render :new
+          redirect_to new_user_place_event_path(@event, :place_id => @event.place_id, :user_id => Place.find_by_id(@event.place_id).user_id)
     	end
   end
 
@@ -32,9 +32,9 @@ class EventsController < ApplicationController
 	@event = Event.find(params[:id])
 	@event.rating = params[:rating].to_i
     	if @event.update_attributes(params[:event])
-          redirect_to @event
+          redirect_to user_place_event_path(@event, :place_id => @event.place_id, :user_id => Place.find_by_id(@event.place_id).user_id)
     	else
-          render :edit
+          redirect_to edit_user_place_event_path(@event, :place_id => @event.place_id, :user_id => Place.find_by_id(@event.place_id).user_id)
     	end
   end
 

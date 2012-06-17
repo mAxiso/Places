@@ -4,7 +4,7 @@
   <% @places.each do |place|%>
     
    <li>
-      <h3><%= link_to place.name, place %></h3> 
+      <h3><%= link_to place.name, user_place_path(place, :user_id => place.user_id)   %></h3> 
     
       <p>-<%= place.description %><p> 
    </li>

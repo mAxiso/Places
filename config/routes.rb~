@@ -5,9 +5,9 @@ Places::Application.routes.draw do
 
   
 
-  get "sessions/new"
+  
 
-  root to: "sessions#index"
+  root to: "sessions#new"
   
   
    

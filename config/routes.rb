@@ -31,6 +31,8 @@ Places::Application.routes.draw do
 
   resources :sessions
 
+  get "log_out" => "sessions#destroy", :as => "log_out"
+
     
   
    

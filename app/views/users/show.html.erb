@@ -1,4 +1,5 @@
 <h1><%= @user.username %> </h1>
+<%= flash[:warning] || flash[:notice] %>
 
 <ol>
   <p>
@@ -7,6 +8,8 @@
   
 
   <%= link_to "Delete Account", @user, :method => :delete, :confirm => "Are you sure?" %>
+  <%= link_to "Sign Out", log_out_path(@user) %>
+  
  
 </ol>
 

@@ -36,7 +36,7 @@
    
        <li>
      
-          <h3><%= link_to event.name,  user_place_event_path(event, :user_id => Place.find_by_id(event.place_id).user_id) %></h3> 
+          <h3><%= link_to event.name,  user_place_event_path(event, :place_id =>event.place_id, :user_id => Place.find_by_id(event.place_id).user_id) %></h3> 
     
           <p>-<%= event.description %><p> 
       

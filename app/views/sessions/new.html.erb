@@ -9,10 +9,8 @@
 <body>
 <p> <%= flash[:warning] || flash[:notice] %> </p>
 <% if current_user == nil%>
-<%= link_to "Sign Up", new_user_path %>
-<% else %>
-<%= link_to "Go To User", current_user %>
-<% end %>
+
+
 <div id='mycontainer'>
 	<h1>P L A C E S</h1>
 <div id='mycenter' class='shadow1'>
@@ -54,6 +52,8 @@
 
 </div>
 </div>
-
+<% else %>
+<%= link_to "Go To User", current_user %>
+<% end %>
 </body>
 </html>
